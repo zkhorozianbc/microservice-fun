@@ -6,7 +6,7 @@ D = {}
 
 
 @app.route('/messages/<hash_val>')
-def todo(hash_val):
+def store_message(hash_val):
 	if hash_val in D:
 		return jsonify(message=D[hash_val])
 
