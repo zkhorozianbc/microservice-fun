@@ -6,14 +6,14 @@ D = {}
 
 
 @app.route('/messages/<hash_val>')
-def store_message(hash_val):
+def get_message(hash_val):
 	if hash_val in D:
 		return jsonify(message=D[hash_val])
 
 	return jsonify(err_msg="Message Not Found"), 404
     
 @app.route('/messages', methods=['POST'])
-def post_message():
+def store_message():
 	message = request.get_json()["message"]
 	hash_val = hashlib.sha256(message).hexdigest()
 
