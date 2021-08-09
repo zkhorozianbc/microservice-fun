@@ -1,10 +1,11 @@
-from flask import Flask,request,jsonify
+import os
 import hashlib
 import redis
+from flask import Flask,request,jsonify
+
 
 app = Flask(__name__)
-
-r = redis.Redis(host='microservice-fun_redis_1', port=6379)
+r = redis.Redis(host=os.getenv("REDIS_HOST"), port=os.getenv("REDIS_PORT"))
 
 
 @app.route('/messages/<hash_val>')
