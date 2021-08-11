@@ -7,7 +7,7 @@ import unittest
 url = "http://localhost:5000/messages"
 
 def url_for_get(hash_val):
-	return url + "/" + hash_val
+	return f"{url}/{hash_val}"
 
 def payload_for_post(message):
 	return {"message": message}
