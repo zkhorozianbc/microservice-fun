@@ -11,16 +11,14 @@ services:
     depends_on:
       - redis
       - postgres
-    command: gunicorn -w 1 -b :5000 app:app
+      
   nginx:
     container_name: nginx
     restart: always
     build: ./nginx
     ports:
       - "80:80"
-    depends_on:
-      - flask
-
+      
   redis:
     container_name: cache
     image: "redis:latest"
