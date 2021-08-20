@@ -2,10 +2,14 @@ import os
 import hashlib
 import redis
 from flask import Flask,request,jsonify
+import psycopg2
 
+from app import create_app
 
-app = Flask(__name__)
+app = create_app()
+
 r = redis.Redis(host=os.getenv("REDIS_HOST"), port=os.getenv("REDIS_PORT"))
+
 
 
 @app.route('/messages/<hash_val>')

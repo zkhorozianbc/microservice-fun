@@ -1,12 +1,39 @@
 version: "3.9"
 services:
-  web:
-    build: .
+  flask:
+    container_name: api
+    build: ./app
     ports:
       - "5000:5000"
     volumes:
       - ./app:/app
-    environment:
-      FLASK_ENV: development
+    env_file: ./app/db/db.conf
+    depends_on:
+      - redis
+      - postgres
+    command: gunicorn -w 1 -b :5000 app:app
+  nginx:
+    container_name: nginx
+    restart: always
+    build: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - flask
+
   redis:
-    image: "redis:alpine"
+    container_name: cache
+    image: "redis:latest"
+
+  postgres:
+    container_name: db
+    image: postgres:latest
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file: ./app/db/db.conf
+    ports:
+      - "5432:5432"
+
+
+volumes:
+  postgres_data:

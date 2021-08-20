@@ -1,5 +1,8 @@
 # microservice-fun
-- Dockerized microservice 
-- Python, Flask wrapper around Redis
+- Dockerized microservice
+- Python, Flask wrapper around Redis and Postgres, fronted by nginx
 - Simple Message Store
-- Unit testing in app/test.py
+
+
+# TODO
+- cache aside strategy
