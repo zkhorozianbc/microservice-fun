@@ -1,8 +1,5 @@
 FROM python:3.9-slim-buster
 
-# ENV FLASK_APP=app:app
-# ENV FLASK_RUN_HOST=0.0.0.0
-# ENV FLASK_ENV=development
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV REDIS_HOST=cache
@@ -16,5 +13,6 @@ WORKDIR /app
 
 COPY ./app ./app
 
-# EXPOSE 5000
-# CMD ["flask", "run"]
+EXPOSE 5000
+
+CMD ["gunicorn", "-w", "4", "-b", ":5000", "app:app"]
