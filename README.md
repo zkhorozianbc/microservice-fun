@@ -1,6 +1,6 @@
 # microservice-fun
 - Dockerized microservice
-- Python, Flask wrapper around Redis and Postgres, fronted by nginx
+- Flask and gunicorn api, Redis and Postgres storage, fronted by nginx
 - Simple Message Store
 
 
