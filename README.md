@@ -1,8 +1,8 @@
-# microservice-fun
+## microservice-fun
 - Dockerized microservice
 - Flask and gunicorn api, Redis and Postgres storage, fronted by nginx
 - Simple Message Store
 
 
-# TODO
+## TODO
 - cache aside strategy
