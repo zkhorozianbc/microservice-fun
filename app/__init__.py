@@ -14,5 +14,4 @@ def create_app():
     flask_app.app_context().push()
     db.init_app(flask_app)
     db.create_all()
-    print(db.engine.table_names())
     return flask_app
